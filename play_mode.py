@@ -6,6 +6,7 @@ import game_framework
 
 import game_world
 import common
+from ball import Ball
 
 from boy import Boy
 from court import Court
@@ -29,6 +30,9 @@ def init():
 
     common.boy = Boy()
     game_world.add_object(common.boy, 1)
+
+    common.ball = Ball()
+    game_world.add_object(common.ball, 1)
 
 
 def finish():

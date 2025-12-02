@@ -18,6 +18,8 @@ def event_stop(e):
 def event_run(e):
     return e[0] == 'RUN'
 
+sx = 0
+sy = 0
 
 # Boy의 Run Speed 계산
 
@@ -53,6 +55,7 @@ class Idle:
     def draw(self):
         # sx = common.court.cw // 2
         # sy = common.court.ch // 2
+        global sx, sy
         sx = self.boy.x - common.court.window_left
         sy = self.boy.y - common.court.window_bottom
         if self.boy.face_dir == 1:  # right
@@ -81,6 +84,7 @@ class Run:
     def draw(self):
         # sx = common.court.cw // 2
         # sy = common.court.ch // 2
+        global sx, sy
         sx = self.boy.x - common.court.window_left
         sy = self.boy.y - common.court.window_bottom
         if self.boy.xdir == 0: # 위 아래로 움직이는 경우
@@ -147,10 +151,12 @@ class Boy:
 
     def draw(self):
         self.state_machine.draw()
+        draw_rectangle(*self.get_bb())
 
     # fill here
     def get_bb(self):
-        return self.x - 20, self.y - 50, self.x + 20, self.y + 50
+        global sx, sy
+        return sx - 20, sy - 40, sx + 20, sy + 40
 
     def handle_collision(self, group, other):
         pass
