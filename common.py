@@ -2,4 +2,4 @@
 
 boy = None
 court = None
-ball = None
+ball = []
